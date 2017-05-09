@@ -7,21 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		251A65B21BF5743B1356B3C9 /* Pods_BigBrotherClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48F81F9203256BDC5D621CA /* Pods_BigBrotherClient.framework */; };
 		380B1AE31EC06A41003AB244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380B1AE21EC06A41003AB244 /* AppDelegate.swift */; };
-		380B1AE51EC06A41003AB244 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380B1AE41EC06A41003AB244 /* ViewController.swift */; };
 		380B1AE81EC06A41003AB244 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380B1AE61EC06A41003AB244 /* Main.storyboard */; };
 		380B1AEA1EC06A41003AB244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380B1AE91EC06A41003AB244 /* Assets.xcassets */; };
-		380B1AED1EC06A41003AB244 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380B1AEB1EC06A41003AB244 /* LaunchScreen.storyboard */; };
+		3881BEA91EC1B4260078C94E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3881BEA81EC1B4260078C94E /* Launch Screen.storyboard */; };
+		388E03071EC0774200BEBE2C /* Lottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388E03021EC0774200BEBE2C /* Lottery.swift */; };
+		388E03081EC0774200BEBE2C /* LotteryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388E03031EC0774200BEBE2C /* LotteryCell.swift */; };
+		388E03091EC0774200BEBE2C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388E03041EC0774200BEBE2C /* MainViewController.swift */; };
+		388E030A1EC0774200BEBE2C /* PreferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388E03051EC0774200BEBE2C /* PreferViewController.swift */; };
+		388E030B1EC0774200BEBE2C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388E03061EC0774200BEBE2C /* ResultViewController.swift */; };
+		388E030F1EC0781E00BEBE2C /* GPJAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 388E030E1EC0781E00BEBE2C /* GPJAssistant.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16A955667966C0833654AAF7 /* Pods-BigBrotherClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBrotherClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigBrotherClient/Pods-BigBrotherClient.debug.xcconfig"; sourceTree = "<group>"; };
 		380B1ADF1EC06A41003AB244 /* BigBrotherClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigBrotherClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		380B1AE21EC06A41003AB244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		380B1AE41EC06A41003AB244 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		380B1AE71EC06A41003AB244 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		380B1AE91EC06A41003AB244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		380B1AEC1EC06A41003AB244 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		380B1AEE1EC06A41003AB244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3881BEA81EC1B4260078C94E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		388E03021EC0774200BEBE2C /* Lottery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lottery.swift; sourceTree = "<group>"; };
+		388E03031EC0774200BEBE2C /* LotteryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryCell.swift; sourceTree = "<group>"; };
+		388E03041EC0774200BEBE2C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		388E03051EC0774200BEBE2C /* PreferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferViewController.swift; sourceTree = "<group>"; };
+		388E03061EC0774200BEBE2C /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		388E030C1EC0781E00BEBE2C /* BigBrotherClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BigBrotherClient-Bridging-Header.h"; sourceTree = "<group>"; };
+		388E030D1EC0781E00BEBE2C /* GPJAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJAssistant.h; sourceTree = "<group>"; };
+		388E030E1EC0781E00BEBE2C /* GPJAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJAssistant.m; sourceTree = "<group>"; };
+		9252EFCAA8E9638472A4F1A9 /* Pods-BigBrotherClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBrotherClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigBrotherClient/Pods-BigBrotherClient.release.xcconfig"; sourceTree = "<group>"; };
+		C48F81F9203256BDC5D621CA /* Pods_BigBrotherClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigBrotherClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				251A65B21BF5743B1356B3C9 /* Pods_BigBrotherClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +57,8 @@
 			children = (
 				380B1AE11EC06A41003AB244 /* BigBrotherClient */,
 				380B1AE01EC06A41003AB244 /* Products */,
+				66A7D7674C3016461BD19001 /* Pods */,
+				FAF238142A6601378B7FA6AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +74,37 @@
 			isa = PBXGroup;
 			children = (
 				380B1AE21EC06A41003AB244 /* AppDelegate.swift */,
-				380B1AE41EC06A41003AB244 /* ViewController.swift */,
+				388E030D1EC0781E00BEBE2C /* GPJAssistant.h */,
+				388E030E1EC0781E00BEBE2C /* GPJAssistant.m */,
+				388E03021EC0774200BEBE2C /* Lottery.swift */,
+				388E03031EC0774200BEBE2C /* LotteryCell.swift */,
+				388E03041EC0774200BEBE2C /* MainViewController.swift */,
+				388E03051EC0774200BEBE2C /* PreferViewController.swift */,
+				388E03061EC0774200BEBE2C /* ResultViewController.swift */,
 				380B1AE61EC06A41003AB244 /* Main.storyboard */,
 				380B1AE91EC06A41003AB244 /* Assets.xcassets */,
-				380B1AEB1EC06A41003AB244 /* LaunchScreen.storyboard */,
 				380B1AEE1EC06A41003AB244 /* Info.plist */,
+				388E030C1EC0781E00BEBE2C /* BigBrotherClient-Bridging-Header.h */,
+				3881BEA81EC1B4260078C94E /* Launch Screen.storyboard */,
 			);
 			path = BigBrotherClient;
+			sourceTree = "<group>";
+		};
+		66A7D7674C3016461BD19001 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16A955667966C0833654AAF7 /* Pods-BigBrotherClient.debug.xcconfig */,
+				9252EFCAA8E9638472A4F1A9 /* Pods-BigBrotherClient.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FAF238142A6601378B7FA6AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C48F81F9203256BDC5D621CA /* Pods_BigBrotherClient.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 380B1AF11EC06A41003AB244 /* Build configuration list for PBXNativeTarget "BigBrotherClient" */;
 			buildPhases = (
+				C419DC632D489830BE4FF6D6 /* [CP] Check Pods Manifest.lock */,
 				380B1ADB1EC06A41003AB244 /* Sources */,
 				380B1ADC1EC06A41003AB244 /* Frameworks */,
 				380B1ADD1EC06A41003AB244 /* Resources */,
+				0FCEA99AC006FB7CA525A990 /* [CP] Embed Pods Frameworks */,
+				CA92AC5C0CA7537FE038E33B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +142,8 @@
 				TargetAttributes = {
 					380B1ADE1EC06A41003AB244 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = K89RQ3A2PQ;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -123,7 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				380B1AED1EC06A41003AB244 /* LaunchScreen.storyboard in Resources */,
+				3881BEA91EC1B4260078C94E /* Launch Screen.storyboard in Resources */,
 				380B1AEA1EC06A41003AB244 /* Assets.xcassets in Resources */,
 				380B1AE81EC06A41003AB244 /* Main.storyboard in Resources */,
 			);
@@ -131,13 +179,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FCEA99AC006FB7CA525A990 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BigBrotherClient/Pods-BigBrotherClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C419DC632D489830BE4FF6D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CA92AC5C0CA7537FE038E33B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BigBrotherClient/Pods-BigBrotherClient-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		380B1ADB1EC06A41003AB244 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				380B1AE51EC06A41003AB244 /* ViewController.swift in Sources */,
+				388E030A1EC0774200BEBE2C /* PreferViewController.swift in Sources */,
+				388E030B1EC0774200BEBE2C /* ResultViewController.swift in Sources */,
+				388E03071EC0774200BEBE2C /* Lottery.swift in Sources */,
+				388E030F1EC0781E00BEBE2C /* GPJAssistant.m in Sources */,
 				380B1AE31EC06A41003AB244 /* AppDelegate.swift in Sources */,
+				388E03081EC0774200BEBE2C /* LotteryCell.swift in Sources */,
+				388E03091EC0774200BEBE2C /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,14 +251,6 @@
 				380B1AE71EC06A41003AB244 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		380B1AEB1EC06A41003AB244 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				380B1AEC1EC06A41003AB244 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -258,24 +351,35 @@
 		};
 		380B1AF21EC06A41003AB244 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16A955667966C0833654AAF7 /* Pods-BigBrotherClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = K89RQ3A2PQ;
 				INFOPLIST_FILE = BigBrotherClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gongpingjia.BigBrotherClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BigBrotherClient/BigBrotherClient-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		380B1AF31EC06A41003AB244 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9252EFCAA8E9638472A4F1A9 /* Pods-BigBrotherClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = K89RQ3A2PQ;
 				INFOPLIST_FILE = BigBrotherClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gongpingjia.BigBrotherClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BigBrotherClient/BigBrotherClient-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -299,6 +403,7 @@
 				380B1AF31EC06A41003AB244 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

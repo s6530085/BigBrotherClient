@@ -1,0 +1,22 @@
+{
+  "name": "SMFoundation",
+  "version": "0.2.8",
+  "summary": "Study_Sun's convenince function toolkit.",
+  "homepage": "https://github.com/s6530085/SMFoundation",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Study_Sun": "sunmin@sunmin.me"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "https://github.com/s6530085/SMFoundation.git",
+    "tag": "0.2.8"
+  },
+  "source_files": "SMFoundation/**/*",
+  "requires_arc": true
+}
