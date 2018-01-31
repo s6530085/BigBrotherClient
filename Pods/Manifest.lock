@@ -1,16 +1,16 @@
 PODS:
   - Aspects (1.4.1)
-  - FMDB (2.6.2):
-    - FMDB/standard (= 2.6.2)
-  - FMDB/standard (2.6.2)
-  - MBProgressHUD (1.0.0)
-  - MJRefresh (3.1.12)
-  - SDWebImage (4.0.0):
-    - SDWebImage/Core (= 4.0.0)
-  - SDWebImage/Core (4.0.0)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - MBProgressHUD (1.1.0)
+  - MJRefresh (3.1.15.3)
+  - SDWebImage (4.2.3):
+    - SDWebImage/Core (= 4.2.3)
+  - SDWebImage/Core (4.2.3)
   - SMFoundation (0.2.8)
-  - SnapKit (3.2.0)
-  - SwiftyJSON (3.1.4)
+  - SnapKit (4.0.0)
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Aspects
@@ -30,19 +30,19 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SwiftyJSON:
-    :commit: 74c3f1c96aadaa597b42bfd108eb02d0af409434
+    :commit: fb67763f27990ba76a42bf412f848af5aef5e5ea
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
-  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SMFoundation: db57a525701d31f6dc786314fde20572b1e7ee7c
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: 8cd73b154950360d79292a8dc8c0d0a85d258930
 
 PODFILE CHECKSUM: 4a77505be89b5a8f35c60f6ecba0d80d617fcb41
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0

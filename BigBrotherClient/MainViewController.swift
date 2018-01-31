@@ -48,8 +48,8 @@ class MainViewController: UIViewController {
         luckyButton.titleLabel?.numberOfLines = 2
         luckyButton.titleLabel?.textAlignment = .center
         
-        let s = NSMutableAttributedString(string: "\(MainViewController.buttonTitles[2])\n", attributes: [NSForegroundColorAttributeName : UIColor.gray, NSFontAttributeName : UIFont.systemFont(ofSize: 30)])
-        s.append(NSAttributedString(string: "摇一摇即可直接获得赐号", attributes: [NSForegroundColorAttributeName : UIColor.gray, NSFontAttributeName : UIFont.systemFont(ofSize: 15)]))
+        let s = NSMutableAttributedString(string: "\(MainViewController.buttonTitles[2])\n", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 30)])
+        s.append(NSAttributedString(string: "摇一摇即可直接获得赐号", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15)]))
         luckyButton.setAttributedTitle(s, for: UIControlState())
         luckyButton.addTarget(self, action: #selector(MainViewController.luckyTapped), for: .touchUpInside)
         self.view.addSubview(luckyButton)

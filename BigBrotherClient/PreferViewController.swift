@@ -26,7 +26,7 @@ class BlockLable : UILabel {
     }
     
     
-    func selfTapped() {
+    @objc func selfTapped() {
         if self.tapBlock != nil {
             self.tapBlock!()
         }
@@ -187,7 +187,7 @@ class PreferViewController: UIViewController {
     
     
     // 长按可以选的长按和取消已经长按的，但是和单击无关，穿插就没反应
-    func ballLongTapped(_ gr : UIGestureRecognizer) {
+    @objc func ballLongTapped(_ gr : UIGestureRecognizer) {
         if gr.state != .began {
             return
         }
@@ -226,7 +226,7 @@ class PreferViewController: UIViewController {
     }
     
     
-    func ballTapped(_ gr : UIGestureRecognizer) {
+    @objc func ballTapped(_ gr : UIGestureRecognizer) {
         gr.view!.isUserInteractionEnabled = false
         sm_dispatch_execute_in_main_queue_after(0.5) { () -> Void in
             gr.view!.isUserInteractionEnabled = true
@@ -261,7 +261,7 @@ class PreferViewController: UIViewController {
     }
     
     
-    func commitTapped(_ button : UIButton) {
+    @objc func commitTapped(_ button : UIButton) {
         
         button.isUserInteractionEnabled = false
         sm_dispatch_execute_in_main_queue_after(1.0) { () -> Void in
