@@ -14,6 +14,18 @@ import SwiftyJSON
 fileprivate let hostName : String = "lottery.sunmin.me"
 fileprivate let countLimit : UInt32 = 5
 
+
+class XBA : UIViewController, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
 class ResultViewController: UIViewController {
 
     fileprivate var tableView : UITableView?
@@ -78,7 +90,6 @@ class ResultViewController: UIViewController {
         
         let lgr = UILongPressGestureRecognizer(target: self, action: #selector(ResultViewController.longPressed(_:)))
         lgr.minimumPressDuration = 1.0
-        lgr.delegate = self
         tableView?.addGestureRecognizer(lgr)
         
         self.getLottery()
@@ -160,7 +171,7 @@ class ResultViewController: UIViewController {
         let p = UIPasteboard.general
         let s = NSMutableString()
         for index in 0..<self.lotteries.count {
-            s.append(self.selectedLotteryOutput(index))
+            s.append(self.selectedLotteryOutput(index) + (index == (self.lotteries.count-1) ? "" : "\n"))
         }
         p.string = s as String
         self.view.alert("已复制到剪切板")
@@ -172,18 +183,13 @@ class ResultViewController: UIViewController {
         let lo = self.lotteries[selectedLotteryIndex].arrayValue
         var lotteryText = ""
         if self.type == .SuperLotto {
-            lotteryText = String(format: "红球: %@, %@, %@, %@, %@, 蓝球: %@, %@\n", lo[0].stringValue, lo[1].stringValue, lo[2].stringValue, lo[3].stringValue, lo[4].stringValue, lo[5].stringValue, lo[6].stringValue)
+            lotteryText = String(format: "红球: %@, %@, %@, %@, %@, 蓝球: %@, %@", lo[0].stringValue, lo[1].stringValue, lo[2].stringValue, lo[3].stringValue, lo[4].stringValue, lo[5].stringValue, lo[6].stringValue)
         }
         else {
-            lotteryText = String(format: "红球: %@, %@, %@, %@, %@, %@, 蓝球: %@\n", lo[0].stringValue, lo[1].stringValue, lo[2].stringValue, lo[3].stringValue, lo[4].stringValue, lo[5].stringValue, lo[6].stringValue)
+            lotteryText = String(format: "红球: %@, %@, %@, %@, %@, %@, 蓝球: %@", lo[0].stringValue, lo[1].stringValue, lo[2].stringValue, lo[3].stringValue, lo[4].stringValue, lo[5].stringValue, lo[6].stringValue)
         }
         return lotteryText
     }
-    
-}
-
-
-extension ResultViewController : UIGestureRecognizerDelegate {
     
 }
 
@@ -217,7 +223,6 @@ extension ResultViewController : UITableViewDataSource {
         }
         cell!.updateWithLottery(self.lotteries[indexPath.row].arrayObject as! Array<Int>)
         return cell!
-        
     }
     
 }
@@ -247,8 +252,8 @@ class HedgeResultViewController : ResultViewController {
                     let baseLotteries = json["lottery_list"].arrayValue
                     if baseLotteries.count > 0 {
                         let baseInts = baseLotteries[0].arrayObject as! Array<Int>
-                        let ereds = self.type == .SuperLotto ?  baseInts[0..<5].map{"\($0)"}.joined(separator: ",") : baseInts[0..<6].map{"\($0)"}.joined(separator: ",")
-                        let eblues = self.type == .SuperLotto ?   baseInts[5..<7].map{"\($0)"}.joined(separator: ","): baseInts[6..<7].map{"\($0)"}.joined(separator: ",")
+                        let ereds = self.type == .SuperLotto ? baseInts[0..<5].map{"\($0)"}.joined(separator: ",") : baseInts[0..<6].map{"\($0)"}.joined(separator: ",")
+                        let eblues = self.type == .SuperLotto ? baseInts[5..<7].map{"\($0)"}.joined(separator: ",") : baseInts[6..<7].map{"\($0)"}.joined(separator: ",")
                         let urlString2 = "http://\(hostName)/lottery?type=\(self.type.rawValue)&algorithm=prefer&count=1&excludereds=\(ereds)&excludeblues=\(eblues)"
                         let s2 = URLSession.shared.dataTask(with:URL(string: urlString2)!, completionHandler: { (data2 : Data?, response2, error2) in
                             sm_dispatch_execute_in_main_queue_after(0.0, {

@@ -9,5 +9,6 @@ target 'BigBrotherClient' do
     pod 'MJRefresh'
     pod 'SMFoundation', :podspec => 'https://raw.githubusercontent.com/s6530085/SMFoundation/master/SMFoundation.podspec'
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+    pod 'BlocksKit','2.2.5'
     use_frameworks!
 end

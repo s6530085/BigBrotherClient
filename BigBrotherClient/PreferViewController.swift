@@ -17,8 +17,6 @@ class BlockLable : UILabel {
         super.init(frame: frame)
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BlockLable.selfTapped)))
         self.isUserInteractionEnabled = true
-        NSLog("%@", "I Life")
-
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -31,13 +29,7 @@ class BlockLable : UILabel {
             self.tapBlock!()
         }
     }
-    
-    
-    deinit {
-        NSLog("%@", "I die")
-    }
 }
-
 
 
 class PreferViewController: UIViewController {
@@ -54,6 +46,7 @@ class PreferViewController: UIViewController {
     
     // 我本来也想不同尺寸显示不同的个数，但是如果出现未知尺寸我还是得改，那么还不如写死一个值
     fileprivate let oneLineBallCount = 7
+    fileprivate var preferCount : Int = 0
     
     init(type : LotteryType) {
         self.type = type
@@ -85,7 +78,6 @@ class PreferViewController: UIViewController {
             _ = make.right.equalTo(-outterMargin)
             let h = innerMargin * 2 + ballOuterWidth * (maxValue / oneLineBallCount + (maxValue % oneLineBallCount != 0 ? 1 : 0))
             _ = make.height.equalTo(h)
-//            _ = make.top.equalTo(topView)
             if topView != nil {
                 _ = make.top.equalTo(topView!.snp.bottom).offset(30)
             }
@@ -148,23 +140,83 @@ class PreferViewController: UIViewController {
                 _ = make.width.equalTo(ballInnerWidth)
                 _ = make.height.equalTo(ballInnerWidth)
             }
-            
         }
         
-        
         return ballsView
+    }
+    
+    fileprivate func geneCountView(topView:UIView) -> UIView {
+        let v = UIView()
+        self.view.addSubview(v)
+        v.snp.makeConstraints{ make in
+            make.left.equalTo(topView)
+            make.right.equalTo(topView)
+            make.top.equalTo(topView.snp.bottom).offset(15)
+            make.height.equalTo(30)
+        }
+        
+        let count = 5
+        for i in 1...count {
+            let l = UILabel()
+            l.text = "\(i)注"
+            l.textColor = UIColor.black
+            l.textAlignment = .center
+            l.font = UIFont.boldSystemFont(ofSize: 14)
+            l.layer.borderColor = UIColor.gray.cgColor
+            l.layer.borderWidth = 0.5
+            l.isUserInteractionEnabled = true
+            l.tag = i
+            
+            v.addSubview(l)
+            l.snp.makeConstraints{ make in
+                make.top.equalTo(0)
+                make.bottom.equalTo(0)
+                if i == 1 {
+                    make.left.equalTo(0)
+                }
+                else {
+                    let leftView = v.viewWithTag(i-1)!
+                    make.left.equalTo(leftView.snp.right).offset(10)
+                    make.width.equalTo(leftView)
+                    if i == count {
+                        make.right.equalTo(0)
+                    }
+                }
+            }
+            l.bk_(whenTapped: {[weak self] in
+                if let weakSelf = self {
+                    // 重复点击还是算去掉吧
+                    if weakSelf.preferCount == i {
+                        weakSelf.preferCount = 0
+                    }
+                    else {
+                        weakSelf.preferCount = i
+                    }
+                    for j in 1...count {
+                        let vv = v.viewWithTag(j)!
+                        if j == weakSelf.preferCount {
+                            vv.layer.borderColor = UIColor.red.cgColor
+                        }
+                        else {
+                            vv.layer.borderColor = UIColor.gray.cgColor
+                        }
+                    }
+                }
+            })
+        }
+        return v
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.edgesForExtendedLayout = UIRectEdge();
+        self.edgesForExtendedLayout = UIRectEdge()
         
         self.view.backgroundColor = UIColor.white
         
         let redBallsView = self.geneBallsView(isBlue:false)
-        
         let blueBallsView = self.geneBallsView(isBlue: true, topView: redBallsView)
+        let countView = self.geneCountView(topView: blueBallsView)
 
         let commitButton = UIButton()
         commitButton.layer.cornerRadius = 5.0
@@ -179,7 +231,7 @@ class PreferViewController: UIViewController {
         commitButton.snp.makeConstraints { (make) -> Void in
             _ = make.left.equalTo(30)
             _ = make.right.equalTo(-30)
-            _ = make.top.equalTo(blueBallsView.snp.bottom).offset(20)
+            _ = make.top.equalTo(countView.snp.bottom).offset(20)
             _ = make.height.equalTo(44)
         }
         
@@ -192,7 +244,7 @@ class PreferViewController: UIViewController {
             return
         }
 
-        sm_dispatch_execute_in_main_queue_after(0.5) { () -> Void in
+        sm_dispatch_execute_in_main_queue_after(0.5) {
             gr.view!.isUserInteractionEnabled = true
         }
         
@@ -269,11 +321,11 @@ class PreferViewController: UIViewController {
         }
         
         if (preferBlues.count >= self.type.blueBallCount()) && (preferReds.count >= self.type.redBallCount()) {
-            self.view.alert("妈的智障你全选好了还赐号个屁")
+            self.view.alert("妈的智障你全选好了还赐个屁号")
             return
         }
         
-        let c = ResultViewController(type: self.type, algorithm: .Prefer, count: 0, preferReds: preferReds, preferBlues: preferBlues, excludeReds: excludeReds, excludeBlues : excludeBlues)
+        let c = ResultViewController(type: self.type, algorithm: .Prefer, count: preferCount, preferReds: preferReds, preferBlues: preferBlues, excludeReds: excludeReds, excludeBlues : excludeBlues)
         self.navigationController?.pushViewController(c, animated: true)
     }
     

@@ -9,13 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface NSDictionary (YOHO)
-
-- (BOOL)operationSuccess;
-
-@end
-
-
 @interface UIView (YOHO)
 
 - (void)alert:(NSString *)message;

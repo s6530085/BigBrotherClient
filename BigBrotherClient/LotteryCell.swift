@@ -45,7 +45,6 @@ class LotteryCell: UITableViewCell {
             }
             balls.append(ballLabel)
         }
-
     }
     
 

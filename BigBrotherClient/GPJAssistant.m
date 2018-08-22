@@ -17,18 +17,6 @@
 
 #define kTagWaitView 10099
 
-@implementation NSDictionary (YOHO)
-
-- (BOOL)operationSuccess
-{
-    return [[self sm_stringForKey:@"status"] isEqualToString:@"success"];
-}
-
-
-@end
-
-
-
 @implementation UIView (YOHO)
 
 - (void)alert:(NSString *)message

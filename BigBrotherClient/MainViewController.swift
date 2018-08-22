@@ -156,8 +156,8 @@ class MainViewController: UIViewController {
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         let unitFlags: NSCalendar.Unit = [.weekday]
         let comps = (calendar as NSCalendar?)?.components(unitFlags, from: now)
-        let week = comps?.weekday
+        let day = comps?.weekday
         // 不过这里1是周日，7是周六哦
-        return (week == 6) || (week == 7) || (week == 2) || (week == 4)
+        return (day == 6) || (day == 7) || (day == 2) || (day == 4)
     }
 }

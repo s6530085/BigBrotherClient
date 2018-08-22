@@ -3,3 +3,4 @@
 //
 
 #import "GPJAssistant.h"
+#import <BlocksKit/BlocksKit.h>
