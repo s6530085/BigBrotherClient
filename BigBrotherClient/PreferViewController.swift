@@ -164,6 +164,8 @@ class PreferViewController: UIViewController {
             l.font = UIFont.boldSystemFont(ofSize: 14)
             l.layer.borderColor = UIColor.gray.cgColor
             l.layer.borderWidth = 0.5
+            l.layer.cornerRadius = 3
+            l.clipsToBounds = true
             l.isUserInteractionEnabled = true
             l.tag = i
             
@@ -206,7 +208,7 @@ class PreferViewController: UIViewController {
         }
         return v
     }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
