@@ -110,29 +110,40 @@ class ResultViewController: UIViewController {
     
     
     fileprivate func getLottery() {
-        self.getting = true
-        self.view.showWait(withMessage: "大仙作法中...")
+        
         var thisCount = self.count
         if thisCount == 0 {
             thisCount = Int(arc4random()%countLimit) + 1
         }
-        let reds = preferReds.map{"\($0)"}.joined(separator: ",")
-        let blues = preferBlues.map{"\($0)"}.joined(separator: ",")
-        let ereds = excludeReds.map{"\($0)"}.joined(separator: ",")
-        let eblues = excludeBlues.map{"\($0)"}.joined(separator: ",")
-        let urlString = "http://\(hostName)/lottery?type=\(type.rawValue)&algorithm=\(algorithm.rawValue)&count=\(thisCount)&preferreds=\(reds)&preferblues=\(blues)&excludereds=\(ereds)&excludeblues=\(eblues)"
-        let s = URLSession.shared.dataTask(with: URL(string: urlString)!, completionHandler: { (data : Data?, response, error) -> Void in
-            self.getting = false
-            sm_dispatch_execute_in_main_queue_after(0.0, { () -> Void in
-                self.view.hideWait()
-                if (error == nil  && data != nil) {
-                    let json = try! JSON(data: data!)
-                    self.lotteries = json["lottery_list"].arrayValue
-                    self.tableView?.reloadData()
-                }
-            })
-        })
-        s.resume()
+        // 网站没了,改为本地获取
+        var js = [JSON]()
+        let result = self.type.gene(thisCount, preferReds: preferReds, excludeReds: excludeReds, preferBlues: preferBlues, excludeBlues: excludeBlues, algorithm: nil)
+        for index in 0 ..< result.count {
+            js.append(JSON(result[index]))
+        }
+        self.lotteries = js
+        self.tableView?.reloadData()
+        
+//        self.getting = true
+//        self.view.showWait(withMessage: "大仙作法中...")
+//        let reds = preferReds.map{"\($0)"}.joined(separator: ",")
+//        let blues = preferBlues.map{"\($0)"}.joined(separator: ",")
+//        let ereds = excludeReds.map{"\($0)"}.joined(separator: ",")
+//        let eblues = excludeBlues.map{"\($0)"}.joined(separator: ",")
+//
+//        let urlString = "http://\(hostName)/lottery?type=\(type.rawValue)&algorithm=\(algorithm.rawValue)&count=\(thisCount)&preferreds=\(reds)&preferblues=\(blues)&excludereds=\(ereds)&excludeblues=\(eblues)"
+//        let s = URLSession.shared.dataTask(with: URL(string: urlString)!, completionHandler: { (data : Data?, response, error) -> Void in
+//            self.getting = false
+//            sm_dispatch_execute_in_main_queue_after(0.0, { () -> Void in
+//                self.view.hideWait()
+//                if (error == nil  && data != nil) {
+//                    let json = try! JSON(data: data!)
+//                    self.lotteries = json["lottery_list"].arrayValue
+//                    self.tableView?.reloadData()
+//                }
+//            })
+//        })
+//        s.resume()
     }
     
     

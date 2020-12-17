@@ -9,14 +9,25 @@
 import UIKit
 import SMFoundation
 
+func ohuohuo(a:Int, b:Int )->Int {
+    return a+b
+}
+
 class MainViewController: UIViewController {
     
     static let buttonTitles = ["大乐透精细选号", "福彩精细选号", "手气不错", "对冲摇号"]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "首页"
         
+        if #available(iOS 13.0, *) {
+            UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
+        } else {
+            // Fallback on earlier versions
+        };
+        
+        self.navigationItem.title = "首页"
         let slButton = UIButton()
         slButton.layer.cornerRadius = 5.0
         slButton.layer.borderColor = UIColor.gray.cgColor
