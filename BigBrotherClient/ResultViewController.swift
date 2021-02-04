@@ -102,7 +102,7 @@ class ResultViewController: UIViewController {
     }
     
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             self.getLottery()
         }
@@ -251,47 +251,62 @@ class HedgeResultViewController : ResultViewController {
     }
     
     override fileprivate func getLottery() {
-        self.getting = true
-        self.view.showWait(withMessage: "大仙作法中...")
-        let urlString = "http://\(hostName)/lottery?type=\(type.rawValue)&algorithm=\(algorithm.rawValue)&count=1"
-        let s = URLSession.shared.dataTask(with: URL(string: urlString)!, completionHandler: { (data : Data?, response, error) -> Void in
-            self.getting = false
-            sm_dispatch_execute_in_main_queue_after(0.0, { () -> Void in
-                if (error == nil  && data != nil) {
-                    let json = try! JSON(data: data!)
-                    // 然后再对冲一下 
-                    let baseLotteries = json["lottery_list"].arrayValue
-                    if baseLotteries.count > 0 {
-                        let baseInts = baseLotteries[0].arrayObject as! Array<Int>
-                        let ereds = self.type == .SuperLotto ? baseInts[0..<5].map{"\($0)"}.joined(separator: ",") : baseInts[0..<6].map{"\($0)"}.joined(separator: ",")
-                        let eblues = self.type == .SuperLotto ? baseInts[5..<7].map{"\($0)"}.joined(separator: ",") : baseInts[6..<7].map{"\($0)"}.joined(separator: ",")
-                        let urlString2 = "http://\(hostName)/lottery?type=\(self.type.rawValue)&algorithm=prefer&count=1&excludereds=\(ereds)&excludeblues=\(eblues)"
-                        let s2 = URLSession.shared.dataTask(with:URL(string: urlString2)!, completionHandler: { (data2 : Data?, response2, error2) in
-                            sm_dispatch_execute_in_main_queue_after(0.0, {
-                                self.view.hideWait()
-                                if (error2 == nil && data2 != nil ) {
-                                    let json2 = try! JSON(data: data2!)
-                                    self.lotteries = baseLotteries + json2["lottery_list"].arrayValue
-                                    self.tableView?.reloadData()
-                                }
-                                else {
-                                    self.view.alert("获取失败，重新摇摇试试吧")
-                                }
-                            })
-                            
-                        })
-                        s2.resume()
-                    }
-                    else {
-                        self.view.alert("获取失败，重新摇摇试试吧")
-                    }
-                }
-                else {
-                    self.view.alert("获取失败，重新摇摇试试吧")
-                }
-            })
-        })
-        s.resume()
+        var js = [JSON]()
+        let result = self.type.gene(1, preferReds: preferReds, excludeReds: excludeReds, preferBlues: preferBlues, excludeBlues: excludeBlues, algorithm: nil)
+        let baseInts :[Int] = result[0];
+        js.append(JSON(baseInts))
+        
+        let ereds = Array(self.type == .SuperLotto ? baseInts[0..<5] : baseInts[0..<6])
+        let eblues = Array(self.type == .SuperLotto ? baseInts[5..<7] : baseInts[6..<7])
+        
+        let result2 = self.type.gene(1, preferReds: preferReds, excludeReds: ereds, preferBlues: preferBlues, excludeBlues: eblues, algorithm: nil)
+        js.append(JSON(result2[0]))
+        
+        self.lotteries = js
+        self.tableView?.reloadData()
+        
+        
+//        self.getting = true
+//        self.view.showWait(withMessage: "大仙作法中...")
+//        let urlString = "http://\(hostName)/lottery?type=\(type.rawValue)&algorithm=\(algorithm.rawValue)&count=1"
+//        let s = URLSession.shared.dataTask(with: URL(string: urlString)!, completionHandler: { (data : Data?, response, error) -> Void in
+//            self.getting = false
+//            sm_dispatch_execute_in_main_queue_after(0.0, { () -> Void in
+//                if (error == nil  && data != nil) {
+//                    let json = try! JSON(data: data!)
+//                    // 然后再对冲一下
+//                    let baseLotteries = json["lottery_list"].arrayValue
+//                    if baseLotteries.count > 0 {
+//                        let baseInts = baseLotteries[0].arrayObject as! Array<Int>
+//                        let ereds = self.type == .SuperLotto ? baseInts[0..<5].map{"\($0)"}.joined(separator: ",") : baseInts[0..<6].map{"\($0)"}.joined(separator: ",")
+//                        let eblues = self.type == .SuperLotto ? baseInts[5..<7].map{"\($0)"}.joined(separator: ",") : baseInts[6..<7].map{"\($0)"}.joined(separator: ",")
+//                        let urlString2 = "http://\(hostName)/lottery?type=\(self.type.rawValue)&algorithm=prefer&count=1&excludereds=\(ereds)&excludeblues=\(eblues)"
+//                        let s2 = URLSession.shared.dataTask(with:URL(string: urlString2)!, completionHandler: { (data2 : Data?, response2, error2) in
+//                            sm_dispatch_execute_in_main_queue_after(0.0, {
+//                                self.view.hideWait()
+//                                if (error2 == nil && data2 != nil ) {
+//                                    let json2 = try! JSON(data: data2!)
+//                                    self.lotteries = baseLotteries + json2["lottery_list"].arrayValue
+//                                    self.tableView?.reloadData()
+//                                }
+//                                else {
+//                                    self.view.alert("获取失败，重新摇摇试试吧")
+//                                }
+//                            })
+//
+//                        })
+//                        s2.resume()
+//                    }
+//                    else {
+//                        self.view.alert("获取失败，重新摇摇试试吧")
+//                    }
+//                }
+//                else {
+//                    self.view.alert("获取失败，重新摇摇试试吧")
+//                }
+//            })
+//        })
+//        s.resume()
     }
 
 }

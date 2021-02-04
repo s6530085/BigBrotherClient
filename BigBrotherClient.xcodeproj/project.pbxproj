@@ -145,7 +145,7 @@
 					380B1ADE1EC06A41003AB244 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 6YNWBFLR33;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1230;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -370,7 +370,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6YNWBFLR33;
 				INFOPLIST_FILE = BigBrotherClient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pp.daxian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,7 +378,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "BigBrotherClient/BigBrotherClient-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -392,14 +392,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6YNWBFLR33;
 				INFOPLIST_FILE = BigBrotherClient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pp.daxian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BigBrotherClient/BigBrotherClient-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

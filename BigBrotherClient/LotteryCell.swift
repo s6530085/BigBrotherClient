@@ -14,7 +14,7 @@ class LotteryCell: UITableViewCell {
     var balls = Array<UILabel>()
     fileprivate let type : LotteryType
     
-    init(style: UITableViewCellStyle, reuseIdentifier: String?, type : LotteryType) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, type : LotteryType) {
         self.type = type
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

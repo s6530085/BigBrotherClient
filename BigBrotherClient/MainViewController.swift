@@ -32,9 +32,9 @@ class MainViewController: UIViewController {
         slButton.layer.cornerRadius = 5.0
         slButton.layer.borderColor = UIColor.gray.cgColor
         slButton.layer.borderWidth = 0.5
-        slButton.setTitleColor(UIColor.gray, for: UIControlState())
+        slButton.setTitleColor(UIColor.gray, for: UIControl.State())
         slButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        slButton.setTitle(MainViewController.buttonTitles[0], for: UIControlState())
+        slButton.setTitle(MainViewController.buttonTitles[0], for: UIControl.State())
         slButton.addTarget(self, action: #selector(MainViewController.supperLottoTapped), for: .touchUpInside)
         
         self.view.addSubview(slButton)
@@ -43,9 +43,9 @@ class MainViewController: UIViewController {
         welButton.layer.cornerRadius = 5.0
         welButton.layer.borderColor = UIColor.red.cgColor
         welButton.layer.borderWidth = 0.5
-        welButton.setTitleColor(UIColor.gray, for: UIControlState())
+        welButton.setTitleColor(UIColor.gray, for: UIControl.State())
         welButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        welButton.setTitle(MainViewController.buttonTitles[1], for: UIControlState())
+        welButton.setTitle(MainViewController.buttonTitles[1], for: UIControl.State())
         welButton.addTarget(self, action: #selector(MainViewController.welfareLottoTapped), for: .touchUpInside)
 
         self.view.addSubview(welButton)
@@ -54,14 +54,14 @@ class MainViewController: UIViewController {
         luckyButton.layer.cornerRadius = 5.0
         luckyButton.layer.borderColor = UIColor.blue.cgColor
         luckyButton.layer.borderWidth = 0.5
-        luckyButton.setTitleColor(UIColor.gray, for: UIControlState())
+        luckyButton.setTitleColor(UIColor.gray, for: UIControl.State())
         luckyButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         luckyButton.titleLabel?.numberOfLines = 2
         luckyButton.titleLabel?.textAlignment = .center
         
-        let s = NSMutableAttributedString(string: "\(MainViewController.buttonTitles[2])\n", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 30)])
-        s.append(NSAttributedString(string: "摇一摇即可直接获得赐号", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15)]))
-        luckyButton.setAttributedTitle(s, for: UIControlState())
+        let s = NSMutableAttributedString(string: "\(MainViewController.buttonTitles[2])\n", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30)])
+        s.append(NSAttributedString(string: "摇一摇即可直接获得赐号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)]))
+        luckyButton.setAttributedTitle(s, for: UIControl.State())
         luckyButton.addTarget(self, action: #selector(MainViewController.luckyTapped), for: .touchUpInside)
         self.view.addSubview(luckyButton)
         
@@ -69,13 +69,12 @@ class MainViewController: UIViewController {
         hedgeButton.layer.cornerRadius = 5.0
         hedgeButton.layer.borderColor = UIColor.blue.cgColor
         hedgeButton.layer.borderWidth = 0.5
-        hedgeButton.setTitleColor(UIColor.gray, for: UIControlState())
+        hedgeButton.setTitleColor(UIColor.gray, for: UIControl.State())
         hedgeButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         hedgeButton.titleLabel?.numberOfLines = 2
         hedgeButton.titleLabel?.textAlignment = .center
-        hedgeButton.setTitle(MainViewController.buttonTitles[3], for: UIControlState())
+        hedgeButton.setTitle(MainViewController.buttonTitles[3], for: UIControl.State())
         hedgeButton.addTarget(self, action: #selector(MainViewController.hedgeTapped), for: .touchUpInside)
-        hedgeButton.addTarget(self, action: #selector(MainViewController.hedgeForceTapped), for: .touchUpOutside)
         self.view.addSubview(hedgeButton)
         
         slButton.snp.makeConstraints { (make) -> Void in
@@ -108,7 +107,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             self.luckyTapped()
         }
@@ -154,14 +153,8 @@ class MainViewController: UIViewController {
         self.navigationController?.pushViewController(c, animated: true)
     }
     
-    @objc fileprivate func hedgeForceTapped(_ button: UIButton) {
-        let c = HedgeResultViewController(type: .SuperLotto, algorithm: .Random)
-        c.navigationItem.title = MainViewController.buttonTitles[3]
-        self.navigationController?.pushViewController(c, animated: true)
-    }
     
-    
-    // 根据时间来给你选择不同的种类1，3，56是大乐透，2，4，7是福彩
+    // 根据时间来给你选择不同的种类1，3，5，6是大乐透，2，4，7是福彩
     fileprivate func todayIsSuperLottoDay() -> Bool {
         let now = Date()
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)

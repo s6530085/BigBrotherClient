@@ -224,9 +224,9 @@ class PreferViewController: UIViewController {
         commitButton.layer.cornerRadius = 5.0
         commitButton.layer.borderColor = UIColor.gray.cgColor
         commitButton.layer.borderWidth = 0.5
-        commitButton.setTitleColor(UIColor.gray, for: UIControlState())
+        commitButton.setTitleColor(UIColor.gray, for: UIControl.State())
         commitButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        commitButton.setTitle("跪求大仙做法", for: UIControlState())
+        commitButton.setTitle("跪求大仙做法", for: UIControl.State())
         commitButton.addTarget(self, action: #selector(PreferViewController.commitTapped(_:)), for: .touchUpInside)
         
         self.view.addSubview(commitButton)
@@ -253,11 +253,11 @@ class PreferViewController: UIViewController {
         let tag = gr.view!.tag
         if tag > blueBallTagIndex {
             let index = tag - blueBallTagIndex
-            if let ss = excludeBlues.index(of: index) {
+            if let ss = excludeBlues.firstIndex(of: index) {
                 excludeBlues.remove(at: ss)
                 gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.white
             }
-            else if preferBlues.index(of: index) == nil {
+            else if preferBlues.firstIndex(of: index) == nil {
                 if excludeBlues.count < self.type.blueBallMaxValue() - self.type.blueBallCount() {
                     excludeBlues.append(index)
                     gr.view?.viewWithTag(self.tagForBallLabel)?.backgroundColor = UIColor.black
@@ -266,11 +266,11 @@ class PreferViewController: UIViewController {
         }
         else {
             let index = tag - redBallTagIndex
-            if let ss = excludeReds.index(of: index) {
+            if let ss = excludeReds.firstIndex(of: index) {
                 excludeReds.remove(at: ss)
                 gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.white
             }
-            else if preferReds.index(of: index) == nil {
+            else if preferReds.firstIndex(of: index) == nil {
                 if excludeReds.count < self.type.redBallMaxValue() - self.type.redBallCount() {
                     excludeReds.append(index)
                     gr.view?.viewWithTag(self.tagForBallLabel)?.backgroundColor = UIColor.black
@@ -288,11 +288,11 @@ class PreferViewController: UIViewController {
         let tag = gr.view!.tag
         if tag > blueBallTagIndex {
             let index = tag - blueBallTagIndex
-            if let ss = preferBlues.index(of: index) {
+            if let ss = preferBlues.firstIndex(of: index) {
                 preferBlues.remove(at: ss)
                 gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.white
             }
-            else if excludeBlues.index(of: index) == nil {
+            else if excludeBlues.firstIndex(of: index) == nil {
                 if preferBlues.count < self.type.blueBallCount() {
                     preferBlues.append(index)
                     gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.blue
@@ -301,11 +301,11 @@ class PreferViewController: UIViewController {
         }
         else {
             let index = tag - redBallTagIndex
-            if let ss = preferReds.index(of: index) {
+            if let ss = preferReds.firstIndex(of: index) {
                 preferReds.remove(at: ss)
                 gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.white
             }
-            else if excludeReds.index(of: index) == nil {
+            else if excludeReds.firstIndex(of: index) == nil {
                 if preferReds.count < self.type.redBallCount() {
                     preferReds.append(index)
                     gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.red
